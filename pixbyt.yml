@@ -1,0 +1,16 @@
+jobs:
+- name: letterboxd
+  tasks:
+  - tap-pixlet--letterboxd target-tidbyt
+- name: letterboxd--webp
+  tasks:
+  - tap-pixlet--letterboxd target-webp
+
+plugins:
+  extractors:
+  - name: tap-pixlet--letterboxd
+    inherit_from: tap-pixlet
+    config:
+      path: apps/letterboxd
+      app_config:
+        username: "$LETTERBOXD_USERNAME"

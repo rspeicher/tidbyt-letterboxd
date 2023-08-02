@@ -5,10 +5,11 @@ load("http.star", "http")
 load("schema.star", "schema")
 load("xpath.star", "xpath")
 
+TITLE_LIMIT = 25
 POSTER_HEIGHT = 32
 POSTER_WIDTH = int(POSTER_HEIGHT / 1.5)
 TEXT_WIDTH = 64 - POSTER_WIDTH - 2
-DELAY=40
+DELAY = 40
 
 def main(config):
   url = "https://letterboxd.com/%s/rss/" % config.get("username", "davidehrlich")
@@ -48,6 +49,9 @@ def get_history(rss, limit=3):
       description = item.query("//description/text()")
       image = xpath.loads(description).query("//p[1]/img/@src")
 
+      if len(title) > TITLE_LIMIT:
+        title = title[0:TITLE_LIMIT] + "..."
+
       history.append({
         "title": title,
         "rating": rating,
@@ -61,7 +65,7 @@ def movie(movie):
   return animation.Transformation(
     duration=DELAY * 3,
     keyframes=[],
-    wait_for_child=True,
+    wait_for_child=False,
     child=render.Row(
       expanded=True,
       main_align="space_between",

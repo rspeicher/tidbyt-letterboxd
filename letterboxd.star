@@ -50,7 +50,7 @@ def get_history(rss, limit=3):
       image = xpath.loads(description).query("//p[1]/img/@src")
 
       if len(title) > TITLE_LIMIT:
-        title = title[0:TITLE_LIMIT] + "..."
+        title = title[0:TITLE_LIMIT] + "…"
 
       history.append({
         "title": title,

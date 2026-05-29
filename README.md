@@ -13,13 +13,6 @@ default to the prolific [davidehrlich].
 
 ![Example screenshot](./screenshot.webp)
 
-## Pixbyt support
-
-An [example `pixbyt.yml`](./pixbyt.yml) file is included for use in [Pixbyt], a
-custom app server for Tidbyt apps.
-
-[Pixbyt]: https://pixbyt.dev/
-
 ## Copyright
 
 (c) 2023 Robert Speicher. See [LICENSE](./LICENSE).
